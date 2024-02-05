@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %} Document {% endblock %}</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  </head>
+  <body>
+    <div class="container flex flex-row justify-center">
+      <nav class="flex justify-center px-3 py-3 bg-gray-700 w-full">
+        <ul class="flex gap-3 py-1 px-5">
+          <li class="">
+            <a
+              href="{% url 'index' %}"
+              onclick="handleClick(event)"
+              class="gap-2 items-center text-white flex transition-all ease-in-out py-3 px-3 rounded-3xl hover:bg-blue-600 cursor-pointer"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="w-6 h-6"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"
+                />
+              </svg>
+              <span class="px-2">Home</span>
+            </a>
+          </li>
+          <li>
+            <a
+              href="{% url 'blogs' %}"
+              onclick="handleClick(event)"
+              class="text-white gap-2 items-center flex transition-all ease-in-out py-3 px-3 rounded-3xl hover:bg-blue-600 cursor-pointer"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="w-6 h-6"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M11.35 3.836c-.065.21-.1.433-.1.664 0 .414.336.75.75.75h4.5a.75.75 0 00.75-.75 2.25 2.25 0 00-.1-.664m-5.8 0A2.251 2.251 0 0113.5 2.25H15c1.012 0 1.867.668 2.15 1.586m-5.8 0c-.376.023-.75.05-1.124.08C9.095 4.01 8.25 4.973 8.25 6.108V8.25m8.9-4.414c.376.023.75.05 1.124.08 1.131.094 1.976 1.057 1.976 2.192V16.5A2.25 2.25 0 0118 18.75h-2.25m-7.5-10.5H4.875c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V18.75m-7.5-10.5h6.375c.621 0 1.125.504 1.125 1.125v9.375m-8.25-3l1.5 1.5 3-3.75"
+                />
+              </svg>
+              <span class="px-2">Blogs</span>
+            </a>
+          </li>
+          <li>
+            <a
+              href="{% url 'login' %}"
+              onclick="handleClick(event)"
+              class="text-white flex transition-all ease-in-out py-3 px-3 rounded-3xl hover:bg-blue-600 cursor-pointer"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                class="w-6 h-6"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M14 5l7 7m0 0l-7 7m7-7H3"
+                ></path>
+              </svg>
+
+              <span class="px-2">Login</span>
+            </a>
+          </li>
+          <li>
+            <a
+              href="{% url 'register' %}"
+              onclick="handleClick(event)"
+              class="text-white flex transition-all ease-in-out py-3 px-3 rounded-3xl hover:bg-blue-600 cursor-pointer"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="w-6 h-6"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M14.25 9.75v-4.5m0 4.5h4.5m-4.5 0l6-6m-3 18c-8.284 0-15-6.716-15-15V4.5A2.25 2.25 0 014.5 2.25h1.372c.516 0 .966.351 1.091.852l1.106 4.423c.11.44-.054.902-.417 1.173l-1.293.97a1.062 1.062 0 00-.38 1.21 12.035 12.035 0 007.143 7.143c.441.162.928-.004 1.21-.38l.97-1.293a1.125 1.125 0 011.173-.417l4.423 1.106c.5.125.852.575.852 1.091V19.5a2.25 2.25 0 01-2.25 2.25h-2.25z"
+                />
+              </svg>
+              <span class="px-2">Register</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+
+    {% block body %} Document {% endblock %}
+
+    <footer class="bg-gray-800 text-white py-5">
+      <div class="container flex flex-col items-center">
+        <p class="mb-3">© 2024 Your Website Name. All rights reserved.</p>
+        <div class="flex space-x-4">
+          <a href="#" class="hover:text-blue-400">Privacy Policy</a>
+          <a href="#" class="hover:text-blue-400">Terms of Service</a>
+          <a href="#" class="hover:text-blue-400">Contact Us</a>
+        </div>
+      </div>
+    </footer>
+    <script>
+      function handleClick(event) {
+        // Remove the active class from all links
+        document.querySelectorAll("a").forEach((el) => {
+          el.classList.remove("bg-blue-700");
+        });
+
+        // Add the active class to the clicked link
+        const currentLink = event.target.closest("a");
+        currentLink.classList.add("bg-blue-700");
+      }
+    </script>
+  </body>
+</html>
