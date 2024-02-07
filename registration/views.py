@@ -13,11 +13,12 @@ def about(request):
 def register(request):
     return render(request,'register.html')
 
-def login(request):
+
+
+
+def loginpage(request):
     return render(request,'login.html')
 
-def blogs(request):
-    return render(request,'blogs.html')
 
 def signup(request):
     error_messsage = None
@@ -34,3 +35,23 @@ def signup(request):
         return redirect('login')
     
     return render(request,'register.html',{"error_messsage":error_messsage})
+
+def signin(request):
+    error_messsage = None
+    if request.method == 'POST':
+        username = request.POST['username']
+        password = request.POST['password']
+
+        user = authenticate(request,username=username,password=password)
+        print(user)
+        if user is not None:
+            login(request,user)
+            return redirect('blogs')
+        else:
+            error_messsage="Username or Eamil doesnot match!!"
+    
+    return render(request,'login.html',{"error_messsage":error_messsage})
+
+@login_required(login_url='login')
+def blogs(request):
+    return render(request,'blogs.html')
