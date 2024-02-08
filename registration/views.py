@@ -13,12 +13,8 @@ def about(request):
 def register(request):
     return render(request,'register.html')
 
-
-
-
 def loginpage(request):
     return render(request,'login.html')
-
 
 def signup(request):
     error_messsage = None
@@ -32,7 +28,8 @@ def signup(request):
     else:
         myuser=User.objects.create_user(username,email,password)
         myuser.save()
-        return redirect('login')
+        login(request,myuser)
+        return redirect('blogs',user=username)
     
     return render(request,'register.html',{"error_messsage":error_messsage})
 
@@ -46,12 +43,16 @@ def signin(request):
         print(user)
         if user is not None:
             login(request,user)
-            return redirect('blogs')
+            return redirect('blogs',user=username)
         else:
             error_messsage="Username or Eamil doesnot match!!"
     
     return render(request,'login.html',{"error_messsage":error_messsage})
 
 @login_required(login_url='login')
-def blogs(request):
-    return render(request,'blogs.html')
+def blogs(request, user=None):
+    return render(request, 'blogs.html')
+
+def signout(request):
+    logout(request)
+    return redirect('index')

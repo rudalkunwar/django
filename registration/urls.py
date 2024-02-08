@@ -6,5 +6,6 @@ urlpatterns = [path('',views.index,name='index'),
                path('register',views.register,name='register'),
                path('signup',views.signup,name='signup'),
                path('signin',views.signin,name='signin'),
-               path('blogs',views.blogs,name='blogs'),
+               path('signout',views.signout,name='signout'),
+               path('blogs/<str:user>',views.blogs,name='blogs'),
                ]
